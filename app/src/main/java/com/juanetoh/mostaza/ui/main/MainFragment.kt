@@ -1,16 +1,14 @@
 package com.juanetoh.mostaza.ui.main
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.juanetoh.mostaza.R
 import com.juanetoh.mostaza.databinding.FragmentMainBinding
+import com.juanetoh.mostaza.ui.Screens
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +39,10 @@ class MainFragment : Fragment() {
 
         viewBinding.refreshLayout.setOnRefreshListener {
             viewModel.getPosts()
+        }
+
+        viewBinding.fab.setOnClickListener {
+            viewModel.navigate(requireContext(), Screens.NewPost)
         }
 
         viewBinding.postsList.adapter = adapter

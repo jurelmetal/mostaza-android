@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mostaza</string>
+    <string name="new_post_button">New Post</string>
 </resources>
