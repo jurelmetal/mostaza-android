@@ -12,10 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class NewPostFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = NewPostFragment()
-    }
-
     private lateinit var viewModel: NewPostViewModel
     private lateinit var viewBinding: FragmentNewPostBinding
 

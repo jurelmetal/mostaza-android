@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Mostaza</string>
-    <string name="new_post_button">New Post</string>
+    <string name="new_post_button">New post</string>
+    <string name="toggle_sort_button">Toggle order</string>
+    <string name="new_post_title">New post</string>
+    <string name="feed_title">Feed</string>
+    <string name="user_avatar_descr">User avatar</string>
+    <string name="author_after_label">said: </string>
 </resources>

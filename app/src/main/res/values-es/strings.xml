@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mostaza</string>
+    <string name="new_post_button">Nuevo post</string>
+    <string name="toggle_sort_button">Invertir orden</string>
+    <string name="new_post_title">Nuevo post</string>
+    <string name="feed_title">Línea de tiempo</string>
+    <string name="user_avatar_descr">Avatar del usuario</string>
+    <string name="author_after_label">dijo:</string>
+</resources>

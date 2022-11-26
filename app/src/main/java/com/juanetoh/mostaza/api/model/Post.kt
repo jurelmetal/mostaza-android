@@ -12,7 +12,7 @@ import java.time.ZonedDateTime
 
 @Serializable
 data class Post(
-    @SerialName("ID")
+    @SerialName("_id")
     val id: String,
     @SerialName("AuthorID")
     val authorId: String,
