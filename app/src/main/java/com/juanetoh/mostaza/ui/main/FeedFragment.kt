@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.juanetoh.mostaza.R
@@ -12,21 +13,17 @@ import com.juanetoh.mostaza.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class FeedFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: FeedViewModel by viewModels()
     private lateinit var viewBinding: FragmentMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentMainBinding.inflate(inflater)
+        viewBinding = FragmentMainBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
 
@@ -47,7 +44,9 @@ class MainFragment : Fragment() {
 
         viewBinding.postsList.adapter = adapter
         viewModel.sortedPostList.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            adapter.submitList(it) {
+                viewBinding.postsList.scrollToPosition(0)
+            }
             viewBinding.refreshLayout.isRefreshing = false
         }
         viewModel.getPosts()

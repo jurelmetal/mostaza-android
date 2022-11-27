@@ -6,7 +6,7 @@
     app:startDestination="@id/feedFragment">
     <fragment
         android:id="@+id/feedFragment"
-        android:name="com.juanetoh.mostaza.ui.main.MainFragment"
+        android:name="com.juanetoh.mostaza.ui.main.FeedFragment"
         android:label="@string/feed_title"
         tools:layout="@layout/fragment_main">
         <action

@@ -6,4 +6,7 @@
     <string name="feed_title">Feed</string>
     <string name="user_avatar_descr">User avatar</string>
     <string name="author_after_label">said: </string>
+    <string name="new_post">New Post</string>
+    <string name="newpost_label_title">Content:</string>
+    <string name="newpost_post_button">Post</string>
 </resources>

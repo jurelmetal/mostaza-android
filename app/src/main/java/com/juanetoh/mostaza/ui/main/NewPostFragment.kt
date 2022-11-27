@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.juanetoh.mostaza.databinding.FragmentNewPostBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,5 +32,20 @@ class NewPostFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewBinding.contentEdittext.addTextChangedListener {
+            it?.let { viewModel.onContentTextUpdated(it.toString()) }
+        }
+
+        viewBinding.buttonPost.setOnClickListener {
+            viewModel.doPost()
+        }
+
+        viewModel.toastMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.navigationRequested.observe(viewLifecycleOwner) {
+            findNavController().navigate(it)
+        }
     }
 }

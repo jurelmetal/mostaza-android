@@ -1,10 +1,8 @@
 package com.juanetoh.mostaza.ui.main
 
 import androidx.lifecycle.*
-import androidx.navigation.NavController
-import com.juanetoh.mostaza.api.model.ApiClient
+import com.juanetoh.mostaza.api.ApiClient
 import com.juanetoh.mostaza.api.model.Post
-import com.juanetoh.mostaza.ui.Screens
 import com.juanetoh.mostaza.ui.util.CombinedLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,7 +14,7 @@ enum class SortBy {
 }
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class FeedViewModel @Inject constructor(
     private val apiClient: ApiClient,
 ) : ViewModel() {
 

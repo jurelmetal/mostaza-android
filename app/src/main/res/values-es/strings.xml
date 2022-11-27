@@ -6,4 +6,7 @@
     <string name="feed_title">Línea de tiempo</string>
     <string name="user_avatar_descr">Avatar del usuario</string>
     <string name="author_after_label">dijo:</string>
+    <string name="new_post">Nuevo post</string>
+    <string name="newpost_label_title">Contenido:</string>
+    <string name="newpost_post_button">Post</string>
 </resources>
