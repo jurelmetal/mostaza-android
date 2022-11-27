@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -32,6 +33,29 @@ class NewPostFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        retrieveCurrentAuthor()
+        setupViewListeners()
+        setupViewModelObservers()
+    }
+
+    private fun retrieveCurrentAuthor() {
+        val author = viewModel.getAuthor()
+        viewBinding.authorInput.setText(author, TextView.BufferType.EDITABLE)
+    }
+
+    private fun setupViewModelObservers() {
+        viewModel.toastMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.dismissFragment.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().popBackStack()
+            }
+        }
+    }
+
+    private fun setupViewListeners() {
         viewBinding.contentEdittext.addTextChangedListener {
             it?.let { viewModel.onContentTextUpdated(it.toString()) }
         }
@@ -40,12 +64,8 @@ class NewPostFragment : Fragment() {
             viewModel.doPost()
         }
 
-        viewModel.toastMessage.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-        }
-
-        viewModel.navigationRequested.observe(viewLifecycleOwner) {
-            findNavController().navigate(it)
+        viewBinding.authorInput.addTextChangedListener {
+            it?.let { viewModel.onAuthorNameUpdated(it.toString()) }
         }
     }
 }

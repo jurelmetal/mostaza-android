@@ -9,4 +9,5 @@
     <string name="new_post">New Post</string>
     <string name="newpost_label_title">Content:</string>
     <string name="newpost_post_button">Post</string>
+    <string name="author_name_placeholder">Your name here</string>
 </resources>

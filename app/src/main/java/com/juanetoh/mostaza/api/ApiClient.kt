@@ -64,7 +64,7 @@ class ApiClient @Inject constructor(
         }
 
         return suspendCoroutine { cont ->
-            val usingIdentity = identity.currentIdentity.value ?: IdentityData.Anonymous
+            val usingIdentity = identity.currentIdentity.value
             client
                 .submitPost(
                     NewPostRequest(
