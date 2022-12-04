@@ -30,7 +30,7 @@ class ApiClient @Inject constructor(
     val client: MostazaService by lazy {
 
         val loggingInterceptor = HttpLoggingInterceptor().apply {
-            setLevel(HttpLoggingInterceptor.Level.BODY)
+            level = HttpLoggingInterceptor.Level.BODY
         }
 
         val client = OkHttpClient.Builder()

@@ -7,10 +7,12 @@ import java.time.ZonedDateTime
 
 @Serializable
 data class Post(
-    @SerialName("_id")
+    @SerialName("ID")
     val id: String,
     @SerialName("AuthorID")
     val authorId: String,
+    @SerialName("DisplayName")
+    val displayName: String,
     @SerialName("Content")
     val content: String,
     @Serializable(with = ZonedDateTimeSerializer::class)
