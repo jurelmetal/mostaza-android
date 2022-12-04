@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="endpoint_url" translatable="false">https://gin-production-1651.up.railway.app</string>
+</resources>

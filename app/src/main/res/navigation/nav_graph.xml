@@ -16,18 +16,24 @@
             app:popExitAnim="@anim/nav_slide_out_right"
             app:popEnterAnim="@anim/nav_slide_in_left"
             app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_feed_to_postdetail"
+            app:enterAnim="@anim/nav_slide_in_right"
+            app:exitAnim="@anim/nav_slide_out_left"
+            app:popExitAnim="@anim/nav_slide_out_right"
+            app:popEnterAnim="@anim/nav_slide_in_left"
+            app:destination="@id/postDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPostFragment"
         android:name="com.juanetoh.mostaza.ui.main.NewPostFragment"
         android:label="@string/new_post_title"
         tools:layout="@layout/fragment_new_post">
-        <action
-            android:id="@+id/action_finished_new_post_to_feed"
-            app:enterAnim="@anim/nav_slide_in_right"
-            app:exitAnim="@anim/nav_slide_out_left"
-            app:popExitAnim="@anim/nav_slide_out_right"
-            app:popEnterAnim="@anim/nav_slide_in_left"
-            app:destination="@id/feedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailFragment"
+        android:name="com.juanetoh.mostaza.ui.main.PostDetailFragment"
+        android:label="@string/post_detail_title"
+        tools:layout="@layout/fragment_post_detail">
     </fragment>
 </navigation>

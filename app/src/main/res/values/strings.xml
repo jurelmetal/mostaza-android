@@ -10,4 +10,8 @@
     <string name="newpost_label_title">Content:</string>
     <string name="newpost_post_button">Post</string>
     <string name="author_name_placeholder">Your name here</string>
+    <string name="post_detail_title">Post details</string>
+    <string name="post_detail_loading">Loading...</string>
+    <string name="post_detail_error">Error when trying to load post: %1$s</string>
+    <string name="feed_get_posts_failure">Failed to get posts from backend.</string>
 </resources>

@@ -4,7 +4,7 @@ import com.juanetoh.mostaza.storage.LocalStorage
 import com.juanetoh.mostaza.storage.StorageKey
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.serialization.Serializable
 import java.util.*
 import java.util.logging.Level
@@ -26,8 +26,8 @@ data class IdentityData(
 class Identity @Inject constructor(
     private val localStorage: LocalStorage,
 ) {
-    private val _currentIdentity: MutableStateFlow<IdentityData> = MutableStateFlow(IdentityData.Anonymous)
-    val currentIdentity: StateFlow<IdentityData> = _currentIdentity
+    private val _currentIdentity = MutableStateFlow(IdentityData.Anonymous)
+    val currentIdentity = _currentIdentity.asStateFlow()
 
     private val logger = Logger.getLogger("Identity")
 

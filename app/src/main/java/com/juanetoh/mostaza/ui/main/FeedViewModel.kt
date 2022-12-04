@@ -1,8 +1,12 @@
 package com.juanetoh.mostaza.ui.main
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.*
+import com.juanetoh.mostaza.R
 import com.juanetoh.mostaza.api.ApiClient
 import com.juanetoh.mostaza.api.model.Post
+import com.juanetoh.mostaza.api.model.Response
+import com.juanetoh.mostaza.extensions.readOnly
 import com.juanetoh.mostaza.ui.util.CombinedLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,8 +22,15 @@ class FeedViewModel @Inject constructor(
     private val apiClient: ApiClient,
 ) : ViewModel() {
 
-    private val _sortBy: MutableLiveData<SortBy> = MutableLiveData(SortBy.New)
-    private val _postList: MutableLiveData<List<Post>> = MutableLiveData()
+    enum class ErrorMessages(@StringRes val resId: Int) {
+        ApiFailure(R.string.feed_get_posts_failure),
+    }
+
+    private val _sortBy = MutableLiveData(SortBy.New)
+    private val _postList = MutableLiveData<List<Post>>()
+    private val _errorToast = MutableLiveData<ErrorMessages>()
+
+    val errorToast = _errorToast.readOnly()
 
     val sortedPostList: LiveData<List<Post>> = CombinedLiveData<List<Post>>(_postList, _sortBy) { (a1, a2) ->
         val list = a1 as? List<Post> ?: listOf()
@@ -33,7 +44,11 @@ class FeedViewModel @Inject constructor(
     fun getPosts() {
         viewModelScope.launch {
             val posts = apiClient.getPosts()
-            _postList.postValue(posts)
+            when(posts.status) {
+                Response.Status.Success -> _postList.postValue(posts.value)
+                Response.Status.Failure -> _errorToast.postValue(ErrorMessages.ApiFailure)
+            }
+
         }
     }
 
